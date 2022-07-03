@@ -58,4 +58,5 @@ let assume proxy is ``` localhost:8000 ```
 
 | ## Route | ## Sending Fromat | ## Sending Example | ## Response Fromat | ## Description |
 |---|---|---|---|---|
+| ``` / ``` | n/a | n/a | ```{"error":false,"error_cause":null,"data":[{Trade Details}]}``` | This will return random trades details |
 
