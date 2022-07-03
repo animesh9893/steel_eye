@@ -4,18 +4,24 @@ from fastapi import FastAPI,Query
 import json
 
 from search_in_indices import Search,QueryRange,GetPITid
+from document_CURD import GetAllDocument,InsertIntoIndices
 
+from model import Trade
+
+from pingDatabase import CheckTesting
 
 app = FastAPI()
 
 def stringToJSON(s):
     return json.loads(s)
 
+
+# home url return sample result from elastic search
 @app.get("/")
 def read_root():    
-    return {"Hello": "World"}
+    return GetAllDocument()
 
-
+# search API with advance filter
 @app.get("/search")
 def search(q: Union[str, None] = None,
     assetClass:Union[str,None]=None,
@@ -56,4 +62,13 @@ def search(q: Union[str, None] = None,
 
     return Search(query)
 
+# API for inserting indices to elasticsearch cloud
+@app.post("/insertIndices")
+async def insetIndices(trade: Trade):
+    InsertIntoIndices(trade.json())
+    return trade
 
+# check database is working or not
+@app.get("/check")
+def read_root():    
+    return {"resp":CheckTesting()}

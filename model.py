@@ -6,6 +6,7 @@ from pydantic import ValidationError, validator
 
 import json
 
+# this is scema provided by steel eye
 class TradeDetails(BaseModel):
     buySellIndicator: str = Field(default=None,description="A value of BUY for buys, SELL for sells.")
     price: float = Field(default=None,description="The price of the Trade.")
@@ -21,7 +22,7 @@ class Trade(BaseModel):
     trade_id: str = Field(alias="tradeId", default=None, description="The unique ID of the trade")
     trader: str = Field(default=None,description="The name of the Trader")
 
-
+# this will help to create object of class TradeDetails
 def createTradeDetails(buySellIndicator,price,quantity):
     obj = TradeDetails()
     obj.buySellIndicator = buySellIndicator
@@ -29,6 +30,7 @@ def createTradeDetails(buySellIndicator,price,quantity):
     obj.quantity = quantity
     return obj
 
+# this will help to create object of class Trade
 def createTrade(data):
     obj = Trade()
     obj.asset_class = data["asset_class"]
@@ -42,13 +44,15 @@ def createTrade(data):
 
     return obj
 
+# convert object to json
 def objectToJSON(obj):
     return obj.json()
 
-
+# convert string to json
 def stringToJSON(s):
     return json.loads(s)
 
+# create object from data of elasticsearch
 def CreateObjects(data):
     resp = {}
     data = stringToJSON(data)
@@ -71,6 +75,7 @@ def CreateObjects(data):
 
     return resp
 
+# it will convert object of trade to json
 def ObjectsToJSON(data):
     if data["error"]:
         return {"error":True}        

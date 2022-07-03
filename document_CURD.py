@@ -6,7 +6,7 @@ import json
 from getHeader import getHeader
 from model import CreateObjects
 
-
+# Return All the Document any indices
 def GetAllDocument():
   url_ = url+indices_name+"/_search?pretty=true&q=*:*"
 
@@ -17,7 +17,7 @@ def GetAllDocument():
 
   return CreateObjects(response.text)
 
-
+# This will insert into indices
 def InsertIntoIndices(data):
 
   url_ = url+indices_name+"/_doc"

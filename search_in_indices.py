@@ -7,6 +7,7 @@ from getHeader import getHeader
 
 from model import CreateObjects
 
+# provide search url request and return objects of Trade
 def Search(data):
   url_ = url+indices_name+"/_search"
   payload = json.dumps(data)

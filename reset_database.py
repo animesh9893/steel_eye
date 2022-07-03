@@ -5,6 +5,7 @@ from document_CURD import *
 from indices_CURD import *
 from main import createTrade
 
+# it will help to fix and fill mock data into "MOCK.csv"
 def UpdateDataFile():
 	df = pd.read_csv("MOCK_DATA.csv")
 
@@ -19,14 +20,17 @@ def UpdateDataFile():
 	df = df.sort_values(by = 'trade_date_time')
 	df.to_csv("MOCK_DATA_2.csv")
 
+# convert csv to dict
 def CSV_to_dict(name):
 	df = pd.read_csv(name)
 	ans = df.to_dict(orient='records')
 	return ans
 
+
 def stringToJSON(s):
     return json.loads(s)
 
+# it will itrate to every row and that will push all valid rows into database
 def updateDB():
 	UpdateDataFile()
 	data = CSV_to_dict("MOCK_DATA_2.csv")
@@ -39,6 +43,7 @@ def updateDB():
 	for i in data:
 		print(InsertIntoIndices(indices_name,i))
 
+# function used to reset database
 def resetDatabase():
 	try:
 		UpdateDataFile()
@@ -46,16 +51,6 @@ def resetDatabase():
 		return True
 	except:
 		return False
-
-if __name__ == '__main__':
-	print("!!!!!!!!!!!!!!!!!!!!!!!!!!")
-	x = int(input("Do You Really want to update Yes(1) or  No(0) : "))
-	if x==1:
-		UpdateDataFile()
-		updateDB()
-		print("Your work is done")
-	else:
-		print("Not Changed")
 
 
 
