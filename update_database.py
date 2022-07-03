@@ -15,6 +15,8 @@ def UpdateDataFile():
 	df["buySellIndicator"] = df["buySellIndicator"].map({True:"BUY",False:"SELL"})
 	df['quantity'] = np.random.randint(1, 6000, df.shape[0])
 	df['trade_id'] = df[['trade_date_time', 'buySellIndicator','quantity',"counterparty","instrument_name"]].sum(axis=1).map(hash)
+	
+	df = df.sort_values(by = 'trade_date_time')
 	df.to_csv("MOCK_DATA_2.csv")
 
 def CSV_to_dict(name):
