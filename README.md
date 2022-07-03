@@ -6,7 +6,7 @@
 2.  [About Database](#orgf12f703)
 3.  [API framework](#org7105ef8)
 4.  [Installation](#org7948595)
-    2.  [Single orders](#org90176e9)
+5.  [Endpoints](#org90176e9)
     3.  [Orders search](#orgc4edae7)
     4.  [Advanced search](#org6016d2e)
     5.  [Bonus points](#orgf4ad3e9)
@@ -49,12 +49,13 @@ To run the API
 ``` uvicorn main:app --reload ```
 
 
+<a id="org90176e9"></a>
+### Endpoint
 
+When you run server then you saw proxy like ``` localhost:8000 ``` or something else just assume that is your base url
 
+let assume proxy is ``` localhost:8000 ```
 
-
-
-
-
-
+| ## Route | ## Sending Fromat | ## Sending Example | ## Response Fromat | ## Description |
+|---|---|---|---|---|
 
