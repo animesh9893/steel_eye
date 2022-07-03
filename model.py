@@ -71,3 +71,16 @@ def CreateObjects(data):
 
     return resp
 
+def ObjectsToJSON(data):
+    if data["error"]:
+        return {"error":True}        
+
+    obj = []
+    for i in data["data"]:
+        i.trade_details = i.trade_details.json()
+        i = i.json()
+        obj.append(i)
+    data = {"data":obj}
+    return json.dumps(data)
+
+

@@ -7,11 +7,6 @@ from getHeader import getHeader
 
 from model import CreateObjects
 
-def POSTrequest(url,headers,data):
-  response = requests.request("POST", url_, headers=headers, data=payload)
-  return response.text
-
-
 def Search(data):
   url_ = url+indices_name+"/_search"
   payload = json.dumps(data)
@@ -22,3 +17,12 @@ def Search(data):
   response = requests.request("POST", url_, headers=headers, data=payload)
 
   return CreateObjects(response.text)
+
+
+def QueryRange(title:str,maxP=None,minP=None):
+  d = {"range":{title:{}}}
+  if maxP!=None:
+    d["range"][title]["lte"] = maxP
+  if minP!=None:
+    d["range"][title]["gte"] = minP
+  return d
