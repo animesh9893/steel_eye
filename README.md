@@ -59,4 +59,31 @@ let assume proxy is ``` localhost:8000 ```
 | ## Route | ## Sending Fromat | ## Sending Example | ## Response Fromat | ## Description |
 |---|---|---|---|---|
 | ``` / ``` | n/a | n/a | ```{"error":false,"error_cause":null,"data":[{Trade Details}]}``` | This will return random trades details |
+|```/check```| na | na | [checkResponse](#checkResponse) | Only for checking if database is working or not |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Endpoints](#org90176e9)
+<a id="checkResponse"></a>
+```{"resp":"{\n  \"name\" : \"instance-0000000000\",\n  \"cluster_name\" : \"8730d251708446b8a456404c603e9cce\",\n  \"cluster_uuid\" : \"qZqXxIq0TJ6JTWrGcQJ3Pg\",\n  \"version\" : {\n    \"number\" : \"8.3.1\",\n    \"build_type\" : \"docker\",\n    \"build_hash\" : \"b9a6b2867996ba92ceac66cb5bafc6db25e7910e\",\n    \"build_date\" : \"2022-06-29T18:39:55.731992798Z\",\n    \"build_snapshot\" : false,\n    \"lucene_version\" : \"9.2.0\",\n    \"minimum_wire_compatibility_version\" : \"7.17.0\",\n    \"minimum_index_compatibility_version\" : \"7.0.0\"\n  },\n  \"tagline\" : \"You Know, for Search\"\n}\n"}```
+
+
+
+
+
+
+
 
