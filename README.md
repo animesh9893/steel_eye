@@ -56,13 +56,41 @@ When you run server then you saw proxy like ``` localhost:8000 ``` or something 
 
 let assume proxy is ``` localhost:8000 ```
 
+## use those points with any combination of search like ```?q=funk&maxPrice=1000```
+
 | ## Route | ## Sending Fromat | ## Sending Example | ## Response Fromat | ## Description |
 |---|---|---|---|---|
 | ``` / ``` | n/a | n/a | ```{"error":false,"error_cause":null,"data":[{Trade Details}]}``` | This will return random trades details |
 |```/check```| na | na | [checkResponse](#checkResponse) | Only for checking if database is working or not |
+|---|---|---|---|---|
+|```/search```| ```\``` | ```http://localhost:8000/search``` | [checkResponse](#searchWithNoParam) | Work Like normal ```/``` request |
+|---|---|---|---|---|
+|```/search?q=```| ```?q=``` | ```http://localhost:8000/search?q=funk``` | [checkResponse](#searchWithQParam) | Work Like normal ```/``` request |
+|---|---|---|---|---|
+|```/search?assetClass=```| ```?assetClass=``` | na | search assest class | na |
+|---|---|---|---|---|
+|```/search?size=```| ```?size=``` | na | response size | na |
+|---|---|---|---|---|
+|```/search?minPrice=```| ```?minPrice=``` | na | min price | na |
+|---|---|---|---|---|
+|```/search?maxPrice=```| ```?maxPrice=``` | na | max price | na |
+|---|---|---|---|---|
+|```/search?start=```| ```?start=``` | na | start date | na |
+|---|---|---|---|---|
+|```/search?tradeType=```| ```?tradeType=``` | na | tradetype buy or sell | na |
+|---|---|---|---|---|
+|```/search?pitId=```| ```?pitId=``` | na | pagination id need to pass if available or leave | na |
+|---|---|---|---|---|
+|```/search?sortD=```| ```?sortD=``` | na | # This will pass multiple times to sort descending pass field name as value | na |
+|---|---|---|---|---|
+|```/search?sortA=```| ```?sortA=``` | na | # This will pass multiple times to sort descending pass field name as value  | na |
+|---|---|---|---|---|
+|```/search?end=```| ```?end=``` | na | # End date | na |
+|---|---|---|---|---|
 
 
-
+# Their is So many functionality like Pingation and all
+You can checkout code for that
 
 
 
@@ -82,8 +110,22 @@ let assume proxy is ``` localhost:8000 ```
 
 
 
+[Endpoints](#org90176e9)
+<a id="searchWithNoParam"></a>
+```
+{"error":false,"error_cause":null,"data":[{"assetClass":"Drama Mystery Thriller","counterparty":"Huels, Hahn and Reichert","instrumentId":"318142211-8","instrumentName":"LMBS","tradeDateTime":"2021-07-07 12:52:00","tradeDetails":{"buySellIndicator":"BUY","price":912.97,"quantity":899},"tradeId":899,"trader":"Gabbie Dann"},{"assetClass":"Drama Romance","counterparty":"Gerhold Group","instrumentId":"055101820-8","instrumentName":"CRSP","tradeDateTime":"2021-07-07 14:57:00","tradeDetails":{"buySellIndicator":"SELL","price":65.36,"quantity":2946},"tradeId":2946,"trader":"Clair Whelband"},{"assetClass":"Drama Romance","counterparty":"Cormier-Kihn","instrumentId":"375816436-2","instrumentName":"TTMI","tradeDateTime":"2021-07-07 16:32:00","tradeDetails":{"buySellIndicator":"SELL","price":352.89,"quantity":395},"tradeId":395,"trader":"Abey Longfellow"},{"assetClass":"Documentary","counterparty":"Greenfelder Group","instrumentId":"189190094-3","instrumentName":"UFS","tradeDateTime":"2021-07-07 19:26:00","tradeDetails":{"buySellIndicator":"BUY","price":169.54,"quantity":9},"tradeId":9,"trader":"Mycah Blesing"},{"assetClass":"Documentary","counterparty":"Considine, Harber and MacGyver","instrumentId":"357013240-4","instrumentName":"SKYW","tradeDateTime":"2021-07-07 22:30:00","tradeDetails":{"buySellIndicator":"SELL","price":532.73,"quantity":1365},"tradeId":1365,"trader":"Quint Creany"},{"assetClass":"Children Drama","counterparty":"Stoltenberg, Denesik and Bartoletti","instrumentId":"594685714-2","instrumentName":"WB","tradeDateTime":"2021-07-08 13:01:00","tradeDetails":{"buySellIndicator":"BUY","price":110.2,"quantity":4092},"tradeId":4092,"trader":"Inna Ell"},{"assetClass":"Adventure Drama Romance","counterparty":"Rogahn and Sons","instrumentId":"047074052-3","instrumentName":"DELT","tradeDateTime":"2021-07-16 19:18:00","tradeDetails":{"buySellIndicator":"SELL","price":356.8,"quantity":4937},"tradeId":4937,"trader":"Gallard Ashall"},{"assetClass":"Documentary","counterparty":"Ortiz and Sons","instrumentId":"744383935-9","instrumentName":"APPN","tradeDateTime":"2021-07-17 02:40:00","tradeDetails":{"buySellIndicator":"BUY","price":868.62,"quantity":2511},"tradeId":2511,"trader":"Gilburt Mattiuzzi"},{"assetClass":"Action Adventure Drama","counterparty":"Vandervort LLC","instrumentId":"242922263-9","instrumentName":"MSD","tradeDateTime":"2021-07-17 05:12:00","tradeDetails":{"buySellIndicator":"SELL","price":437.13,"quantity":1224},"tradeId":1224,"trader":"Yulma Jouanny"},{"assetClass":"Crime Drama Romance","counterparty":"Sawayn Group","instrumentId":"625671270-6","instrumentName":"PSA^X","tradeDateTime":"2021-07-17 18:26:00","tradeDetails":{"buySellIndicator":"BUY","price":603.17,"quantity":5685},"tradeId":5685,"trader":"Farrel Benton"}]}
+```
 
 
+[Endpoints](#org90176e9)
+<a id="searchWithQParam"></a>
+```{"error":false,"error_cause":null,"data":[{"assetClass":"Children Comedy Romance","counterparty":"Funk LLC","instrumentId":"549871001-1","instrumentName":"IBOC","tradeDateTime":"2022-03-31 12:22:00","tradeDetails":{"buySellIndicator":"BUY","price":441.16,"quantity":5014},"tradeId":5014,"trader":"Rafaelita Bonas"},{"assetClass":"Drama","counterparty":"Funk-Boyle","instrumentId":"806301325-5","instrumentName":"ARDM","tradeDateTime":"2022-05-22 12:46:00","tradeDetails":{"buySellIndicator":"SELL","price":709.05,"quantity":1696},"tradeId":1696,"trader":"Mal McGunley"},{"assetClass":"Documentary","counterparty":"Funk and Sons","instrumentId":"766455428-4","instrumentName":"BATRK","tradeDateTime":"2021-12-14 09:41:00","tradeDetails":{"buySellIndicator":"BUY","price":273.89,"quantity":5106},"tradeId":5106,"trader":"Rourke MacLaughlin"},{"assetClass":"Documentary","counterparty":"Funk, Kirlin and Okuneva","instrumentId":"496102655-7","instrumentName":"CYHHZ","tradeDateTime":"2021-08-05 03:19:00","tradeDetails":{"buySellIndicator":"BUY","price":116.33,"quantity":1042},"tradeId":1042,"trader":"Merrili Furmage"}]}```
 
+
+[Endpoints](#org90176e9)
+<a id="searchWithQParam"></a>
+``` 
+
+```
 
 
