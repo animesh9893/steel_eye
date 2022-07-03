@@ -1,11 +1,15 @@
 from typing import Union, List
 
 from fastapi import FastAPI,Query
+import json
 
-from search_in_indices import Search,QueryRange
+from search_in_indices import Search,QueryRange,GetPITid
+
 
 app = FastAPI()
 
+def stringToJSON(s):
+    return json.loads(s)
 
 @app.get("/")
 def read_root():    
@@ -15,17 +19,22 @@ def read_root():
 @app.get("/search")
 def search(q: Union[str, None] = None,
     assetClass:Union[str,None]=None,
+    size:Union[int,None]=None,
     minPrice:Union[str,None]=None,
     maxPrice:Union[str,None]=None,
     start:Union[str,None]=None,
     tradeType:Union[str,None]=None,
+    pitId:Union[str,None]=None,
     sortD:List[str] = Query(default=[]),
     sortA:List[str] = Query(default=[]),
     end:Union[str,None]=None):
 
-    print(sortD)
-
-    query = {"query":{"bool":{"must":[    ]}},"sort": ["_score"]}
+    if pitId==None:
+        pitId = stringToJSON(GetPITid())
+        pitId = pitId["id"]
+    if size==None:
+        size=10
+    query = {"size":size,"query":{"bool":{"must":[]}},"sort": ["_score"]}
     
     if q!=None:
         query["query"]["bool"]["must"].append({"multi_match": {"query" :q, "fields": ["counterparty","instrument_id","instrument_name","trader"]}})
@@ -46,11 +55,5 @@ def search(q: Union[str, None] = None,
 
 
     return Search(query)
-
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
 
 
